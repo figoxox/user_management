@@ -21,6 +21,3 @@ Este repositorio contiene el backend de el manejo de usuario.
 mvn spring-boot:run
 ```
 * El servidor quedará por defecto en `http://localhost:8080`.
-
-### ¿Dudas? ###
-* Contáctate con fernando.bustosal@gmail.com

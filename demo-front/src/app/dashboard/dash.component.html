@@ -1,0 +1,61 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="210px">
+    <!--Mini Cards-->
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+      <app-card title="Nuevo Usuario">
+        <form [formGroup]="createUserForm" (ngSubmit)="createUser()">
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput id="name" required formControlName="name" >
+            <mat-error *ngIf="createUserForm.get('name').hasError('required')">Nombre es requerido</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Rut</mat-label>
+            <input matInput id="rut" required formControlName="rut" >
+            <!-- <mat-error *ngIf="isValidRut() == false">Rut inválido</mat-error> -->
+            <mat-error *ngIf="createUserForm.get('rut').hasError('required')">Rut es requerido</mat-error>
+            <mat-error *ngIf="createUserForm.get('rut').hasError('pattern')">Ej: 12345678-9</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Teléfono</mat-label>
+            <input matInput type="tel" id="phone" formControlName="phone" >
+            <!-- <mat-error *ngIf="createUserForm.get('phone').hasError('required')">Teléfono es requerido</mat-error> -->
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Correo</mat-label>
+            <input matInput type="email" id="email" required formControlName="email" >
+            <mat-error *ngIf="createUserForm.get('email').hasError('required') || createUserForm.get('email').hasError('email')">
+              Correo es inválido
+            </mat-error>
+          </mat-form-field>
+
+          <br *ngIf="isUserCreated == null">
+          <mat-error *ngIf="isUserCreated == false">Error al crear usuario</mat-error>
+          
+          <button mat-raised-button color="primary" type="submit" [disabled]="createUserForm.invalid">Guardar</button>
+          <mat-icon *ngIf="isUserCreated == false">
+            <span class="material-icons">
+              cancel
+            </span>
+          </mat-icon>
+          <mat-icon *ngIf="isUserCreated == true">
+            <span class="material-icons">
+              check
+            </span>
+          </mat-icon>
+        </form>
+      </app-card>
+    </mat-grid-tile>
+
+    <!--Table-->
+    <mat-grid-tile [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+      <app-card title="Todos los usuarios">
+        <app-users-table></app-users-table>
+      </app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

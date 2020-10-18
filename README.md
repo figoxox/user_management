@@ -14,6 +14,5 @@ El dashboard cuenta con dos interfaces, para un registro de usuario como una lis
 ![alt text](https://github.com/figoxox/user_management/blob/master/images/brave_kcbZRKYNmm.png?raw=true)
 Registro de nuevo usuario.
 
-
 ![alt text](https://github.com/figoxox/user_management/blob/master/images/brave_Y6612VUs2s.png?raw=true)
 Lista de todos los usuarios registrados.

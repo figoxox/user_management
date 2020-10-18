@@ -18,6 +18,3 @@ npm install
 npm start
 ```
 * El servidor quedará por defecto en `http://localhost:4200`.
-
-### ¿Dudas? ###
-* Contáctate con fernando.bustosal@gmail.com
